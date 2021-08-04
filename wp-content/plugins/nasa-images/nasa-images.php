@@ -74,9 +74,24 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-nasa-images.php';
  * @since    1.0.0
  */
 function run_nasa_images() {
-
 	$plugin = new Nasa_Images();
 	$plugin->run();
 
 }
 run_nasa_images();
+
+function reg_nasa_post_type() {
+    register_post_type( 'post-nasa-gallery1',
+        array(
+            'labels' => array(
+                'name' => __( 'NASA images' ),
+                'singular_name' => __( 'NASA image' )
+            ),
+            'public' => true,
+            'has_archive' => true,
+            'rewrite' => array('slug' => 'nasa-gallery'),
+        )
+    );
+}
+
+add_action( 'init', 'reg_nasa_post_type');

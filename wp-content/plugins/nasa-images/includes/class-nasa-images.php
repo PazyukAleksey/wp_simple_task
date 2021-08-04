@@ -56,6 +56,10 @@ class Nasa_Images {
 	 * @var      string    $version    The current version of the plugin.
 	 */
 	protected $version;
+	protected $apikey;
+	protected $apiurl;
+	protected $start_date;
+	protected $end_date;
 
 	/**
 	 * Define the core functionality of the plugin.
@@ -73,11 +77,16 @@ class Nasa_Images {
 			$this->version = '1.0.0';
 		}
 		$this->plugin_name = 'nasa-images';
+		$this->apikey = '8npnsbJvgzSq1SlZj3nxGhxE3X5OjspLbaglkgL5';
+		$this->apiurl = 'api.nasa.gov/planetary/apod';
+		$this->start_date = date('Y-m-d');
+		$this->end_date = 'api.nasa.gov/planetary/apod';
 
 		$this->load_dependencies();
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
+		$this->create_nasa_post_type();
 
 	}
 
@@ -214,5 +223,11 @@ class Nasa_Images {
 	public function get_version() {
 		return $this->version;
 	}
+
+    private function create_nasa_post_type() {
+        $GLOBALS['foo'] = $this->start_date;
+
+
+    }
 
 }

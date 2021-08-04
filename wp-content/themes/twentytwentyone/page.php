@@ -10,7 +10,8 @@
  */
 
 get_header();
-
+    echo '1233'.'<br>';
+    echo 'global - '.$GLOBALS['foo'];
 /* Start the Loop */
 while ( have_posts() ) :
 	the_post();
