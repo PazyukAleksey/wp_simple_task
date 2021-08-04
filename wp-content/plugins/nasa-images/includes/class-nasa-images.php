@@ -59,7 +59,7 @@ class Nasa_Images {
 	protected $apikey;
 	protected $apiurl;
 	protected $start_date;
-	protected $end_date;
+	protected $send_request_url;
 
 	/**
 	 * Define the core functionality of the plugin.
@@ -78,9 +78,9 @@ class Nasa_Images {
 		}
 		$this->plugin_name = 'nasa-images';
 		$this->apikey = '8npnsbJvgzSq1SlZj3nxGhxE3X5OjspLbaglkgL5';
-		$this->apiurl = 'api.nasa.gov/planetary/apod';
-		$this->start_date = date('Y-m-d');
-		$this->end_date = 'api.nasa.gov/planetary/apod';
+		$this->apiurl = 'https://api.nasa.gov/planetary/apod';
+		$this->start_date = $this->set_end_date();
+        $this->send_request_url = $this->apiurl . '?api_key=' . $this->apikey . '&start_date=' . $this->start_date;
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -224,8 +224,33 @@ class Nasa_Images {
 		return $this->version;
 	}
 
+	private function set_end_date() {
+	    $current_date = new DateTime();
+        $start_date = $current_date -> getTimestamp() - (60 * 60 * 24 * 5);;
+        $start_date = date('Y-m-d' , $start_date );
+        return $start_date;
+    }
+
     private function create_nasa_post_type() {
-        $GLOBALS['foo'] = $this->start_date;
+//        $myCurl = curl_init();
+//        curl_setopt_array($myCurl, array(
+//            CURLOPT_URL => $this->send_request_url,
+//            CURLOPT_RETURNTRANSFER => true,
+//            CURLOPT_POST => true,
+//        ));
+//        $response = curl_exec($myCurl);
+//        curl_close($myCurl);
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $this->send_request_url);
+// Set so curl_exec returns the result instead of outputting it.
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+// Get the response and close the channel.
+        $response = curl_exec($ch);
+        curl_close($ch);
+
+
+        $GLOBALS['foo'] = json_decode($response);
 
 
     }
