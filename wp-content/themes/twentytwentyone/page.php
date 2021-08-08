@@ -10,10 +10,7 @@
  */
 
 get_header();
-    echo 'global - '.$GLOBALS['foo'];
-    echo "<pre>";
-    print_r($GLOBALS['foo']);
-    echo "</pre>";
+
 /* Start the Loop */
 while ( have_posts() ) :
 	the_post();

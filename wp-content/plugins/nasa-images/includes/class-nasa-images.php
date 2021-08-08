@@ -60,6 +60,8 @@ class Nasa_Images {
 	protected $apiurl;
 	protected $start_date;
 	protected $send_request_url;
+	protected $nasa_api_data;
+	protected $nasa_image_ids;
 
 	/**
 	 * Define the core functionality of the plugin.
@@ -86,8 +88,7 @@ class Nasa_Images {
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
-		$this->create_nasa_post_type();
-
+		$this->nasa_api_data = $this->set_nasa_api_data();
 	}
 
 	/**
@@ -226,33 +227,41 @@ class Nasa_Images {
 
 	private function set_end_date() {
 	    $current_date = new DateTime();
-        $start_date = $current_date -> getTimestamp() - (60 * 60 * 24 * 5);;
+        $start_date = $current_date -> getTimestamp() - (60 * 60 * 24 * 4   );;
         $start_date = date('Y-m-d' , $start_date );
         return $start_date;
     }
 
-    private function create_nasa_post_type() {
-//        $myCurl = curl_init();
-//        curl_setopt_array($myCurl, array(
-//            CURLOPT_URL => $this->send_request_url,
-//            CURLOPT_RETURNTRANSFER => true,
-//            CURLOPT_POST => true,
-//        ));
-//        $response = curl_exec($myCurl);
-//        curl_close($myCurl);
-
+    private function set_nasa_api_data() {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $this->send_request_url);
-// Set so curl_exec returns the result instead of outputting it.
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-// Get the response and close the channel.
         $response = curl_exec($ch);
         curl_close($ch);
+        return json_decode($response);
+    }
 
+    /**
+     * @return string
+     */
+    public function get_nasa_api_data()
+    {
+        return $this->nasa_api_data;
+    }
 
-        $GLOBALS['foo'] = json_decode($response);
+    /**
+     * @return string
+     */
+    public function get_send_request_url(): string
+    {
+        return $this->send_request_url;
+    }
 
-
+    public function set_nasa_image_ids($id) {
+        array_push($this->nasa_image_ids, $id);
+    }
+    public function get_nasa_image_ids() {
+        return $this->nasa_image_ids;
     }
 
 }

@@ -2,3 +2,10 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
+.swiper-container {
+    width: 500px;
+    height: 300px;
+}
+.nasa-image {
+    width: 100%;
+}

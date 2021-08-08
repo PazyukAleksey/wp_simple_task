@@ -1,6 +1,17 @@
-(function( $ ) {
+	(function( $ ) {
 	'use strict';
-
+	$( window ).load(function() {
+		const swiper = new Swiper('.swiper-container', {
+			loop: true,
+			pagination: {
+				el: '.swiper-pagination',
+			},
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+		});
+	});
 	/**
 	 * All of the code for your public-facing JavaScript source
 	 * should reside in this file.

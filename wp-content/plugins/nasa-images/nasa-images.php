@@ -79,9 +79,8 @@ function run_nasa_images() {
 
 }
 run_nasa_images();
-
 function reg_nasa_post_type() {
-    register_post_type( 'post-nasa-gallery1',
+    register_post_type( 'post-nasa-gallery',
         array(
             'labels' => array(
                 'name' => __( 'NASA images' ),
@@ -90,8 +89,32 @@ function reg_nasa_post_type() {
             'public' => true,
             'has_archive' => true,
             'rewrite' => array('slug' => 'nasa-gallery'),
+            'supports' => array('title', 'editor', 'thumbnail')
         )
     );
 }
 
 add_action( 'init', 'reg_nasa_post_type');
+
+function nasa_slider_shortcode() {
+    $nasa_posts = get_posts( array(
+        'post_type' => 'post-nasa-gallery',
+        'numberposts' => '-1',
+    ));
+    ?>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <?php foreach ($nasa_posts as $nasa_post): ?>
+            <div class="swiper-slide">
+                <img class="nasa-image" src="<?php echo get_the_post_thumbnail_url($nasa_post->ID, array(500, 400)) ?>" alt="NASA image">
+            </div>
+            <?php endforeach; ?>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+<?php
+}
+add_shortcode('nasa_slider', 'nasa_slider_shortcode');
+

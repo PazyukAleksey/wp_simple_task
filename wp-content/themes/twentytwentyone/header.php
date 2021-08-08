@@ -22,6 +22,12 @@
 
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
+
+<?php
+wp_nav_menu( array(
+    'theme_location' => 'main_menu',
+    'container_class' => 'main_menu--wrapper' ) );
+?>
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'twentytwentyone' ); ?></a>
 
