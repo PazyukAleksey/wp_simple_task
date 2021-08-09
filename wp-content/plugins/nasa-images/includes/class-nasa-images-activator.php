@@ -22,14 +22,14 @@
  */
 class Nasa_Images_Activator {
 
-	/**
-	 * Short Description. (use period)
-	 *
-	 * Long Description.
-	 *
-	 * @since    1.0.0
-	 */
-	public static function activate() {
+    /**
+     * Short Description. (use period)
+     *
+     * Long Description.
+     *
+     * @since    1.0.0
+     */
+    public static function activate() {
         require_once(ABSPATH . "wp-admin" . '/includes/image.php');
         require_once(ABSPATH . "wp-admin" . '/includes/file.php');
         require_once(ABSPATH . "wp-admin" . '/includes/media.php');
@@ -46,9 +46,12 @@ class Nasa_Images_Activator {
                 'post_parent'   => 0,
             );
             $post = wp_insert_post($post_arr);
-            $img_tag = media_sideload_image($item->url, 0, 'NASA image', id);
+            $img_tag = media_sideload_image($item->url, 0, 'NASA image', 'id' );
             set_post_thumbnail($post, $img_tag);
         endforeach;
-	}
+
+        add_filter('init', function(){wp_schedule_event( time(), '1 minute', 'get_day_image');});
+
+    }
 
 }

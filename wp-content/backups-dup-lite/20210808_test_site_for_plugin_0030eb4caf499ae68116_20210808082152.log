@@ -1,0 +1,84 @@
+********************************************************************************
+DUPLICATOR-LITE PACKAGE-LOG: 08.08.2021 08:22
+NOTICE: Do NOT post to public sites or forums 
+********************************************************************************
+VERSION:	1.4.2
+WORDPRESS:	5.8
+PHP INFO:	7.1.33 | SAPI: apache2handler
+SERVER:		Apache 
+PHP TIME LIMIT: (0) no time limit imposed 
+PHP MAX MEMORY: 4294967296 (1536M default) 
+MEMORY STACK: 4MB
+
+********************************************************************************
+DATABASE:
+********************************************************************************
+BUILD MODE:   MYSQLDUMP
+MYSQLTIMEOUT: 5000
+MYSQLDUMP:    Is Supported
+SQL CREATED: 20210808_test_site_for_plugin_0030eb4caf499ae68116_20210808082152_database.sql
+SQL FILE SIZE: 924.78KB (946970)
+SQL FILE TIME: 2021-08-08 08:22:06
+SQL RUNTIME: 2.51 sec.
+
+********************************************************************************
+ARCHIVE (ZIP):
+********************************************************************************
+ARCHIVE DIR:  C:/OpenServer/domains/wp-site
+ARCHIVE FILE: 20210808_test_site_for_plugin_0030eb4caf499ae68116_20210808082152_archive.zip
+FILTERS: *OFF*
+DIRS:
+	not set
+FILES:
+	not set
+EXTS:  not set
+----------------------------------------
+COMPRESSING
+SIZE:	86.46MB
+STATS:	Dirs 665 | Files 6,157
+SQL ADDED: 20210808_test_site_for_plugin_0030eb4caf499ae68116_20210808082152_database.sql
+ZipArchive Object
+(
+    [status] => 0
+    [statusSys] => 0
+    [numFiles] => 6822
+    [filename] => C:\OpenServer\domains\wp-site\wp-content\backups-dup-lite\tmp\20210808_test_site_for_plugin_0030eb4caf499ae68116_20210808082152_archive.zip
+    [comment] => 
+)
+
+FILE ADDED TO ZIP: 6821
+COMPRESSION RESULT: '1'
+COMPRESSED SIZE: 46.39MB
+ARCHIVE RUNTIME: 72.27 sec.
+MEMORY STACK: 4MB
+building installer
+add_extra_files1
+add_extra_files2
+add_extra_files3
+add_extra_files4
+Doing archive file check
+add_extra_files5
+add_extra_files6
+add_extra_files8
+Successfully opened zip C:/OpenServer/domains/wp-site/wp-content/backups-dup-lite/tmp/20210808_test_site_for_plugin_0030eb4caf499ae68116_20210808082152_archive.zip
+Adding enhanced installer files to archive using ZipArchive
+Installer files added to archive
+Added to archive
+After ziparchive close when adding installer
+
+********************************************************************************
+INTEGRITY CHECKS:
+********************************************************************************
+SQL FILE: 924.78KB
+INSTALLER FILE: 64.27KB
+ARCHIVE FILE: 47.83MB 
+EXPECTED FILE/DIRECTORY COUNT: 6,822
+ACTUAL FILE/DIRECTORY COUNT: 6,821
+ARCHIVE CONSISTENCY TEST: Pass
+
+********************************************************************************
+RECORD ID:[1]
+TOTAL PROCESS RUNTIME: 75.73 sec.
+PEAK PHP MEMORY USED: 6MB
+DONE PROCESSING => 20210808_test_site_for_plugin 08.08.2021 08:23
+
